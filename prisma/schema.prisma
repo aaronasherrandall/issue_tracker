@@ -9,6 +9,37 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql" // specify db provider here
   url      = env("DATABASE_URL")
 }
+
+// Singular model name for 'Issue'
+// No relationships for now
+model Issue {
+  // Auto-incrementing ID for each new record
+  id          Int      @id @default(autoincrement())
+  
+  // Title of the issue, stored as a varchar with a max length of 255 characters
+  title       String   @db.VarChar(255)
+  
+  // Detailed description of the issue, stored as text
+  description String   @db.Text
+  
+  // Status of the issue, default is 'OPEN'
+  status      Status   @default(OPEN)
+  
+  // Timestamp for when the record is created, default to the current time
+  createdAt   DateTime @default(now())
+  
+  // Auto-updates the timestamp when the record is updated
+  updatedAt   DateTime @updatedAt
+}
+
+// Enum for status, MySQL-specific
+// Defines fixed set of status values for an issue
+enum Status {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
