@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link"; // Importing the Next.js Link component for client-side navigation
+import { usePathname } from "next/navigation";
 import React from "react"; // Importing React to create the NavBar component
 import { AiFillBug } from "react-icons/ai"; // Importing a bug icon from react-icons to use in the navbar
+import classnames from "classnames";
 
 const NavBar = () => {
+  const currentPath = usePathname();
   // Defining an array of navigation links, each with a label and a destination href
   const links = [
     { label: "Dashboard", href: "/" },
-    { label: "Issues", href: "/" },
+    { label: "Issues", href: "/issues" },
   ];
 
   return (
@@ -20,7 +25,11 @@ const NavBar = () => {
         {links.map((link) => (
           <Link
             key={link.href} // Using href as the unique key for each link
-            className="text-zinc-500 hover:text-zinc-800 transition-colors"
+            className={classnames({
+              "text-zinc-900": link.href === currentPath, // Apply this class if the link is active
+              "text-zinc-500": link.href !== currentPath, // Apply this class if the link is not active
+              "hover:text-zinc-800 transition-colors": true, // Always apply hover and transition classes
+            })}
             href={link.href} // The href determines where the link will navigate to
           >
             {/* Add label dynamically */}
