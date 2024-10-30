@@ -5,7 +5,7 @@ const IssuePage = () => {
   // Defining a functional component named 'page'. In React, functional components are functions that return JSX.
   // This component has no props or state in this simple example.
 
-  return <div>IssuePage</div>;
+  return <div>Issue Page</div>;
   // JSX (JavaScript XML): A syntax extension used by React that looks similar to HTML.
   // This is returning a <div> element with the text "page". The <div> will be rendered on the UI when this component is used.
 };
