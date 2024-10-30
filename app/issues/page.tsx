@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@radix-ui/themes";
+import Link from "next/link";
 // Importing the React library. This is required when using JSX, as React is needed to convert JSX into standard JavaScript.
 
 const IssuePage = () => {
@@ -8,7 +9,9 @@ const IssuePage = () => {
 
   return (
     <div>
-      <Button>New Issue</Button>
+      <Button>
+        <Link href="/issues/new"> New Issue</Link>
+      </Button>
     </div>
   );
   // JSX (JavaScript XML): A syntax extension used by React that looks similar to HTML.
